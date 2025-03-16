@@ -46,8 +46,9 @@ conda install -c conda-forge diffusers
 
 ## dataset
 
-The data is organized inside the dataset folder as follows. Using the target image as input: normal is obtained using <a href="https://github.com/baegwangbin/DSINE">DSINE</a>, shading and albedo are obtained using <a href="https://github.com/compphoto/Intrinsic">IID</a>, and the prompt is generated using <a href="https://github.com/salesforce/LAVIS/tree/main/projects/blip2">BLIP-2</a>. The image paths and prompts should be saved in the dataset/data/prompt.json file.
-(Note that during training, the shading map is used, but during inference, the user scribble in the shading map folder should be used instead.)
+The data is organized inside the dataset folder as follows:
+Using the target image as input: normal is obtained using <a href="https://github.com/baegwangbin/DSINE">DSINE</a>, shading and albedo are obtained using <a href="https://github.com/compphoto/Intrinsic">IID</a>, and the prompt is generated using <a href="https://github.com/salesforce/LAVIS/tree/main/projects/blip2">BLIP-2</a>. The image paths and prompts should be saved in the dataset/data/prompt.json file.
+(Note that during training, the shading map is used, but during inference, the user scribble is used instead of the shading map.)
 ```
 $ROOT/dataset
 └── data
@@ -60,9 +61,33 @@ $ROOT/dataset
 ```
 ---
 
-## Training
+## :computer: Training
+
+STEP1: Train Stable Diffusion
     ```
-    CUDA_VISIBLE_DEVICES=0 python train_nightly_ver.py
+    export MODEL_DIR="stabilityai/stable-diffusion-2-1"
+    export OUTPUT_DIR=scribblelight_stable_diffusion
+
+    accelerate launch train_stable_diffusion.py \
+    --pretrained_model_name_or_path=$MODEL_DIR \
+    --output_dir=$OUTPUT_DIR \
+    --validation_image "./imnormal_1.png" "./imnormal_1.png" \
+    --validation_prompt "a porch with a bed chairs and a table" "a porch with a bed chairs and a table" \
+    --dataset=data \
+    ```
+    
+STEP2: Train ControlNet
+    ```
+    export MODEL_DIR="stabilityai/stable-diffusion-2-1"
+    export OUTPUT_DIR=scribblelight_controlnet
+    
+    accelerate launch train_controlnet.py \
+     --pretrained_model_name_or_path=$MODEL_DIR \
+     --output_dir=$OUTPUT_DIR \
+     --pretrain_unet_path=scribblelight_stable_diffusion/checkpoint-41000 \
+     --validation_image "./imnormal_1.png" "./imnormal_1.png" \
+     --validation_prompt "a porch with a bed chairs and a table" "a porch with a bed chairs and a table" \
+     --dataset=data
     ```
 
 ## Evaluation
