@@ -26,6 +26,8 @@ Image-based relighting of indoor rooms creates an immersive virtual understandin
 
 ## :wrench: Setup
 
+please install PyTorch using the following command:
+
 ```
 conda create -n scriblit python=3.9
 conda activate scriblit
@@ -34,26 +36,28 @@ conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvi
 
 The exact versioning may vary depending on your computing environment and what GPUs you have access to. Note this <a href="https://towardsdatascience.com/managing-multiple-cuda-versions-on-a-single-machine-a-comprehensive-guide-97db1b22acdc/">good article</a> for maintaining multiple system-level versions of CUDA.
 
-
-### Installing PyTorch Dependencies
-
-please install PyTorch using the following command:
-
-```bash
-
-conda create -n scriblit python=3.9
-conda activate scriblit
-conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia
+Download <a href="https://github.com/huggingface/diffusers">diffusers</a> using the following code.
 
 ```
-
+conda install -c conda-forge diffusers
+```
 
 ---
 
-## Custom dataset
+## dataset
 
-If you want to try GHG on your own dataset, please refer to the [CUSTOM_DATASET.md](CUSTOM_DATASET.md).
-
+The data is organized inside the dataset folder as follows. Using the target image as input: normal is obtained using <a href="https://github.com/baegwangbin/DSINE">DSINE</a>, shading and albedo are obtained using <a href="https://github.com/compphoto/Intrinsic">IID</a>, and the prompt is generated using <a href="https://github.com/salesforce/LAVIS/tree/main/projects/blip2">BLIP-2</a>. The image paths and prompts should be saved in the dataset/data/prompt.json file.
+(Note that during training, the shading map is used, but during inference, the user scribble in the shading map folder should be used instead.)
+```
+$ROOT/dataset
+└── data
+   └── normal
+   └── shading
+   └── albedo
+   └── target
+   └── prompt
+   └── prompt.json 
+```
 ---
 
 ## Training
