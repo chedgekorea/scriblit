@@ -145,14 +145,11 @@ with open(file_path, 'r') as file:
 		albedo_latents = noise_scheduler.add_noise(albedo_latents, albedo_noise, timesteps_albedo)
 
 		# generate image
-		result_image = []
-		# random_number = random.randint(0, 12345)
 		generator = set_seed(args.seed)
 		image = pipe(
 			prompt, num_inference_steps=20, generator=generator, image=(control_image_normal, control_image_shading), albedo_latents= albedo_latents.cuda()
 		).images[0]
 
-		result_image.append(image)
 		image.save("./inference/%s/output_%d_%d.png"%(args.data,number,args.seed))
 
 		normal = Image.open(normal)
