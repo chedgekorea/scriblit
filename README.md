@@ -86,7 +86,7 @@ STEP2: Train ControlNet
     accelerate launch train_controlnet.py \
      --pretrained_model_name_or_path=$MODEL_DIR \
      --output_dir=$OUTPUT_DIR \
-     --pretrain_unet_path=scribblelight_stable_diffusion/checkpoint-41000 \
+     --pretrain_unet_path=scribblelight_stable_diffusion/checkpoint-50000 \
      --validation_image "./imnormal_1.png" "./imnormal_1.png" \
      --validation_prompt "a porch with a bed chairs and a table" "a porch with a bed chairs and a table" \
      --dataset=data
