@@ -44,7 +44,7 @@ conda install -c conda-forge diffusers
 
 ---
 
-## dataset
+## Dataset
 
 The data is organized inside the dataset folder as follows:
 Using the target image as input: normal is obtained using <a href="https://github.com/baegwangbin/DSINE">DSINE</a>, shading and albedo are obtained using <a href="https://github.com/compphoto/Intrinsic">IID</a>, and the prompt is generated using <a href="https://github.com/salesforce/LAVIS/tree/main/projects/blip2">BLIP-2</a>. The image paths and prompts should be saved in the dataset/data/prompt.json file.
