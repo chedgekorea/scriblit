@@ -97,12 +97,15 @@ STEP2: Train ControlNet
 STEP1: Please download the <a href="https://drive.google.com/drive/u/2/folders/1oZB9zmGrvx6Ozv7wsqQZm8VgmY0Pik8Y">pretrained weights</a> to $ROOT/scribblelight_controlnet/.
 
 STEP2: Generate the predictions.
+
     ```
     CUDA_VISIBLE_DEVICES=0 python inference.py -n scribblelight_controlnet -data data
     ```
+    
    The results will be saved at `$ROOT/inference/{$data}`.
 
 ## :scroll: Citation
+
 If you find this code useful for your research, please cite it using the following BibTeX entry.
 
 ```
