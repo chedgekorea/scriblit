@@ -64,6 +64,7 @@ $ROOT/dataset
 ## :computer: Training
 
 STEP1: Train Stable Diffusion
+
     ```
     export MODEL_DIR="stabilityai/stable-diffusion-2-1"
     export OUTPUT_DIR=scribblelight_stable_diffusion
@@ -77,6 +78,7 @@ STEP1: Train Stable Diffusion
     ```
     
 STEP2: Train ControlNet
+
     ```
     export MODEL_DIR="stabilityai/stable-diffusion-2-1"
     export OUTPUT_DIR=scribblelight_controlnet
@@ -90,31 +92,26 @@ STEP2: Train ControlNet
      --dataset=data
     ```
 
-## Evaluation
+## :computer: Evaluation
 
-We provide detailed information about the evaluation protocol in [PROTOCOL.md](PROTOCOL.md).
-To make the comparison with our Generalizable Human Gaussians easier, we provide the evaluation results in this [link](https://1drv.ms/u/s!Aq9xVNM_DjPG5RDhuwsv4XaaP62v?e=acMiPv).
-
-1. Please download the pretrained weights following the instructions in [INSTALL.md](INSTALL.md).
-2. Generate the predictions.
+STEP1: Please download the pretrained weights.
+STEP2: Generate the predictions.
     ```
     CUDA_VISIBLE_DEVICES=0 python eval.py --test_data_root datasets/THuman/val --regressor_path weights/model_gaussian.pth --inpaintor_path weights/model_inpaint.pth
     ```
-   The results will be saved at `$ROOT/outputs/eval/{$exp_name}`.
-3. Compute the metrics.
-    ```
-    python metrics/compute_metrics.py
-    ``` 
+   The results will be saved at `$ROOT/inference/{$data}`.
 
-## Citation
-
+## :scroll: Citation
 If you find this code useful for your research, please cite it using the following BibTeX entry.
 
 ```
-@article{kwon2024ghg,
-  title={Generalizable Human Gaussians for Sparse View Synthesis},
-  author={Youngjoong Kwon, Baole Fang, Yixing Lu, Haoye Dong, Cheng Zhang, Francisco Vicente Carrasco, Albert Mosella-Montoro, Jianjin Xu, Shingo Takagi, Daeil Kim, Aayush Prakash, Fernando De la Torre},
-  journal={European Conference on Computer Vision},
-  year={2024}
-}
+@misc{choi2024scribblelightsingleimageindoor,
+		title={ScribbleLight: Single Image Indoor Relighting with Scribbles}, 
+		author={Jun Myeong Choi and Annie Wang and Pieter Peers and Anand Bhattad and Roni Sengupta},
+		year={2024},
+		eprint={2411.17696},
+		archivePrefix={arXiv},
+		primaryClass={cs.CV},
+		url={https://arxiv.org/abs/2411.17696}, 
+  }
 ```
