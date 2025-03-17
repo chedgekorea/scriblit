@@ -1,0 +1,3 @@
+{"normal": "dataset/data/normal/0.png", "shading": "dataset/data/scribble/0_0.png", "albedo": "dataset/data/albedo/0.png", "target": "dataset/data/image/0.png", "prompt": "a bedroom with a white bed, dresser and mirror"}
+{"normal": "dataset/data/normal/0.png", "shading": "dataset/data/scribble/0_1.png", "albedo": "dataset/data/albedo/0.png", "target": "dataset/data/image/0.png", "prompt": "a bedroom with a white bed, dresser and mirror"}
+{"normal": "dataset/data/normal/0.png", "shading": "dataset/data/scribble/0_2.png", "albedo": "dataset/data/albedo/0.png", "target": "dataset/data/image/0.png", "prompt": "a bedroom with a white bed, dresser and mirror"}
