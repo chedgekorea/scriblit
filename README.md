@@ -98,7 +98,7 @@ STEP1: Please download the <a href="https://drive.google.com/drive/u/2/folders/1
 
 STEP2: Generate the predictions.
     ```
-    CUDA_VISIBLE_DEVICES=0 python inference.py -n bedroom_noisy_albedo_scribble_update_random -data data
+    CUDA_VISIBLE_DEVICES=0 python inference.py -n scribblelight_controlnet -data data
     ```
    The results will be saved at `$ROOT/inference/{$data}`.
 
