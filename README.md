@@ -94,10 +94,10 @@ STEP2: Train ControlNet
 
 ## :computer: Evaluation
 
-STEP1: Please download the pretrained weights.
+STEP1: Please download the <a href="https://drive.google.com/drive/u/2/folders/1oZB9zmGrvx6Ozv7wsqQZm8VgmY0Pik8Y">pretrained weights</a> to $ROOT/scribblelight_controlnet/.
 STEP2: Generate the predictions.
     ```
-    CUDA_VISIBLE_DEVICES=0 python eval.py --test_data_root datasets/THuman/val --regressor_path weights/model_gaussian.pth --inpaintor_path weights/model_inpaint.pth
+    CUDA_VISIBLE_DEVICES=0 python inference.py -n bedroom_noisy_albedo_scribble_update_random -data data
     ```
    The results will be saved at `$ROOT/inference/{$data}`.
 
