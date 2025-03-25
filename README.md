@@ -109,13 +109,10 @@ STEP2: Generate the predictions.
 If you find this code useful for your research, please cite it using the following BibTeX entry.
 
 ```
-@misc{choi2024scribblelightsingleimageindoor,
-		title={ScribbleLight: Single Image Indoor Relighting with Scribbles}, 
-		author={Jun Myeong Choi and Annie Wang and Pieter Peers and Anand Bhattad and Roni Sengupta},
-		year={2024},
-		eprint={2411.17696},
-		archivePrefix={arXiv},
-		primaryClass={cs.CV},
-		url={https://arxiv.org/abs/2411.17696}, 
+@article{choi2024scribblelight,
+  title={ScribbleLight: Single Image Indoor Relighting with Scribbles},
+  author={Choi, Jun Myeong and Wang, Annie and Peers, Pieter and Bhattad, Anand and Sengupta, Roni},
+  journal={arXiv preprint arXiv:2411.17696},
+  year={2024}
   }
 ```
